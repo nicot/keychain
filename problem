@@ -1,0 +1,19 @@
+Problem:
+./keychain --agents gpg
+
+returns:
+ * keychain ##VERSION## ~ http://www.funtoo.org
+ * Starting gpg-agent...
+ * Error: Failed to start gpg-agent
+
+
+ * keychain ##VERSION## ~ http://www.funtoo.org
+ * keychain ##VERSION## ~ http://www.funtoo.org
+ * Starting gpg-agent...
+ * Starting gpg-agent...
+ * Error: Failed to start gpg-agent
+ * Error: Failed to start gpg-agent
+
+cause:
+we're running gpg-agent even though there's already oen created
+function startagent should not be called (495)
